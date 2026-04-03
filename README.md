@@ -78,63 +78,63 @@ This section outlines the required software, toolboxes, platform notes, installa
 
 ### Platform and Compatibility
 
-The framework is intended to be conceptually portable across operating systems. However, at the current stage of development, the workflow has been primarily tested on **Windows 11**, and this is the recommended environment for reproducing the setup described in this repository.
+The framework is intended to be conceptually portable across operating systems. However, at the current stage of development, the workflow has been primarily tested on Windows 11, and this is the recommended environment for reproducing the setup described in this repository.
 
 Additional notes:
 
-- The MuJoCo Simulink Blockset has also been reported as tested on **Ubuntu 20.04** and **Ubuntu 22.04**.
-- **ROS 2** is generally available on **Windows**, **Linux**, and **macOS**.
-- In practice, support on Linux and macOS may be more limited depending on toolchain, compiler, and integration details.
+- The MuJoCo Simulink Blockset has also been reported as tested on Ubuntu 20.04 and Ubuntu 22.04.
+- ROS 2 is generally available on Windows, Linux, and macOS.
+- In practice, support on Linux and macOS may be more limited depending on the toolchain, compiler, and integration details.
 
 ### Requirements
 
 Before using the framework, make sure the following software is available on your machine:
 
-- **MATLAB R2025b**
+- MATLAB R2025b
   - This workflow is intended for the desktop version of MATLAB.
-  - **MATLAB Online is not supported** for this project.
-- **Windows 11**
-- **Python 3.9 or Python 3.10**
-- **Visual Studio 2022 or newer** with C++ support
-- **Visual Studio Code**
-- **Git**
+  - MATLAB Online is not supported.
+- Windows 11
+- MuJoCo 3.3.2
+- Python 3.9 or 3.10
+- Visual Studio 2022 or newer with C++ support
+- Visual Studio Code
+- Git
 - A machine with:
-  - a **dedicated GPU** for smoother MuJoCo simulation
-  - a **reasonably strong CPU** for compilation and simulation tasks
-- **ROS 2 Jazzy Jalisco**
+  - A dedicated GPU for smoother MuJoCo simulation
+  - A reasonably strong CPU for compilation and simulation tasks
+- ROS 2 Jazzy Jalisco
+  - This is the ROS 2 distribution used in the current MATLAB / ROS Toolbox workflow.
 
 ### Required MATLAB Toolboxes
 
 The following MATLAB products are required for the current workflow:
 
-- **Simulink**
-- **Simulink Coder**
-- **MATLAB Coder**
-- **GPU Coder**
-- **ROS Toolbox**
-- **Parallel Computing Toolbox**
-- **Aerospace Toolbox**
-- **Aerospace Blockset**
+- Simulink
+- Simulink Coder
+- MATLAB Coder
+- GPU Coder
+- ROS Toolbox
+- Parallel Computing Toolbox
+- Aerospace Toolbox
+- Aerospace Blockset
 
 ### Optional MATLAB Toolboxes
 
 The following products may be useful for future extensions, but are not mandatory for the current base setup:
 
-- **Computer Vision Toolbox**
-- **Robotics System Toolbox**
-- **Control System Toolbox**
+- Computer Vision Toolbox
+- Robotics System Toolbox
+- Control System Toolbox
 
 ### Development Tools Setup
 
 #### Visual Studio 2022 or newer
 
-Install Visual Studio with the **Desktop development with C++** workload enabled.
+Install Visual Studio with the Desktop development with C++ workload enabled. Inside the installer, make sure the following components are available:
 
-Inside the installer, make sure the following components are available:
-
-- **MSVC C++ compiler tools**
-- **Windows SDK**
-- **C++ build tools**
+- MSVC C++ compiler tools
+- Windows SDK
+- C++ build tools
 
 If MATLAB does not detect the compiler correctly after installation, run the following commands in the MATLAB Command Window:
 
@@ -145,9 +145,7 @@ mex -setup c
 
 ### MuJoCo Installation
 
-To install the MuJoCo Simulink integration, follow the setup instructions provided in the MuJoCo Simulink Blockset repository included in this project's references.
-
-In addition, install the MuJoCo Python package from PowerShell:
+To install the MuJoCo Simulink integration, follow the setup instructions provided in the MuJoCo Simulink Blockset repository included in this project's references. In addition, install the MuJoCo Python package from PowerShell:
 
 ```powershell
 py -m pip install mujoco
@@ -158,9 +156,7 @@ The second command is useful to verify that MuJoCo was installed correctly in th
 
 ### ROS Toolbox Setup
 
-Install **ROS Toolbox** from the MATLAB Add-On Explorer.
-
-If ROS-related features do not work correctly, recreate the Python environment from MATLAB settings and explicitly point it to your local Python installation. A typical path looks like this:
+Install ROS Toolbox from the MATLAB Add-On Explorer. If ROS-related features do not work correctly, recreate the Python environment from MATLAB settings and explicitly point it to your local Python installation. A typical path looks like this:
 
 ```text
 C:\Users\YOUR_USERNAME\AppData\Local\Programs\Python\Python39\python.exe
@@ -168,9 +164,7 @@ C:\Users\YOUR_USERNAME\AppData\Local\Programs\Python\Python39\python.exe
 
 ### ROS 2 Custom Messages
 
-This framework uses the `unitree_hg` custom message package for ROS 2 communication.
-
-To generate the custom messages:
+This framework uses the `unitree_hg` custom message package for ROS 2 communication. To generate the custom messages:
 
 1. Run:
 
@@ -208,15 +202,15 @@ Before attempting a full run, verify the following:
 
 For better simulation performance on Windows, the following settings are recommended:
 
-- Set Windows power mode to **Best performance**
+- Set Windows power mode to Best performance
 - In the NVIDIA Control Panel:
-  - go to **Manage 3D settings**
-  - set **Preferred graphics processor** to **High-performance NVIDIA processor**
-  - apply the same preference under **Program Settings** if needed
+  - go to Manage 3D settings
+  - set Preferred graphics processor to High-performance NVIDIA processor
+  - apply the same preference under Program Settings if needed
 - In the MuJoCo Plant block:
-  - set **FPS** to **30**
-  - disable **Depth output**
-  - disable **VSync**
+  - set FPS to 30
+  - disable Depth output
+  - disable VSync
 
 ---
 
@@ -373,7 +367,7 @@ source
 source_old
 ```
 
-Do **not** delete it if it still contains MuJoCo-related files.
+Do not delete it if it still contains MuJoCo-related files.
 
 4. If Windows does not allow the rename:
    - close MATLAB, or
@@ -419,15 +413,6 @@ rmw_cyclonedds_cpp
 
 4. Recreate the ROS Toolbox Python environment if necessary.
 
-### MuJoCo simulation feels slow or unstable
-
-If simulation performance is poor:
-
-- verify that MATLAB is using the intended GPU
-- reduce the MuJoCo Plant FPS to **30**
-- disable **Depth output**
-- disable **VSync**
-- make sure the Windows power profile is set to **Best performance**
 
 ---
 
@@ -442,9 +427,9 @@ The framework is intended to be executed from the main Simulink model. The expec
 1. open the model
 2. choose the backend with `RUN_MODE`
 3. update the model with `Ctrl + D`
-4. press **Run**
+4. press Run
 
-The current setup notes explicitly recommend **not** relying on a separate launcher for the main workflow.
+The current setup notes explicitly recommend not relying on a separate launcher for the main workflow.
 
 ### Custom Messages and ROS 2 Integration
 
@@ -454,7 +439,7 @@ The ROS 2 backend depends on the `unitree_hg` custom message package. Message ge
 
 When running on the real robot:
 
-- make sure the robot is in **development mode**
+- make sure the robot is in development mode
 - verify the network configuration
 - verify the relevant ROS 2 topics before running
 - keep the execution focused on the active Simulink workflow
