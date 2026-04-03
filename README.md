@@ -45,8 +45,8 @@ The core idea of the framework is to allow the user to develop and organize cont
 
 At the center of the repository is a Sim2Real Variant Subsystem, which enables switching between:
 
-- **MuJoCo**, for simulation-based development and testing
-- **ROS 2**, for communication and deployment with the real robot
+- **MuJoCo:** for simulation-based development and testing
+- **ROS 2:** for communication and deployment with the real robot
 
 <p align="center">
   <img src="images/Sim2Real.png" alt="Sim2Real Logo" width="300">
