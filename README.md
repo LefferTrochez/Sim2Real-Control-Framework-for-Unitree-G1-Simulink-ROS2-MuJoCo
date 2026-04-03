@@ -138,7 +138,7 @@ This project is built around the following technologies:
 - MATLAB
 - Simulink
 - MuJoCo
-- ROS 2
+- XML unitree
 - ROS Toolbox
 - Simulink Blockset for MuJoCo Simulator
 
@@ -147,7 +147,7 @@ This project is built around the following technologies:
 ## Contact
 
 **Leffer Trochez**  
-M.Sc. Thesis Researcher  
+Electronic Engineer and M.Sc. in Electronic and Computer Engineering
 Universidad de los Andes  
 Faculty of Engineering  
 Department of Electrical and Electronic Engineering  
