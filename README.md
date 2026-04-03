@@ -35,9 +35,7 @@
 
 ## Introduction
 
-This repository presents **Version 1.0** of a **MATLAB/Simulink-based Sim2Real framework** for the **Unitree G1 humanoid robot**, integrating **MuJoCo** and **ROS 2** within a unified workflow for controller development, simulation-based validation, visualization, and real-robot deployment.
-
-The main objective of this repository is to provide a clean and research-oriented framework that preserves a common high-level interface across both simulation and real-robot execution backends. This repository also serves as a technical complement to the associated poster and project dissemination material.
+This repository presents Version 1.0 of a MATLAB/Simulink-based Sim2Real framework for the Unitree G1 humanoid robot, integrating MuJoCo and ROS 2 within a unified workflow for controller development, simulation-based validation, visualization, and real-robot deployment. The main objective of this repository is to provide a clean and research-oriented framework that preserves a common high-level interface across both simulation and real-robot execution backends. 
 
 ---
 
