@@ -1,4 +1,4 @@
-# Sim2Real Framework for the Unitree G1 Using Simulink, ROS 2, and MuJoCo
+# A MATLAB/Simulink-Based Sim2Real Control Framework for the Unitree G1 Using ROS 2 and MuJoCo
 
 <p align="center">
   <img src="images/Pipeline.png" alt="Sim2Real Pipeline" width="1000">
