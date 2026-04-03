@@ -133,14 +133,15 @@ Planned future developments include:
 
 ## Technologies Used
 
-This project is built around the following technologies:
-
-- MATLAB
-- Simulink
-- MuJoCo
-- XML unitree
-- ROS Toolbox
-- Simulink Blockset for MuJoCo Simulator
+<p align="center">
+  <img src="images/MatlabSimulink.jpg" alt="MATLAB and Simulink" width="260">
+  &nbsp;&nbsp;&nbsp;
+  <img src="images/Mujoco.jpeg" alt="MuJoCo" width="180">
+  &nbsp;&nbsp;&nbsp;
+  <img src="images/Unitree.png" alt="Unitree" width="180">
+  &nbsp;&nbsp;&nbsp;
+  <img src="images/ROS.jpg" alt="ROS 2" width="180">
+</p>
 
 ---
 
@@ -206,7 +207,5 @@ This project also builds upon or interacts with important technologies and platf
 - **MathWorks**
 - **ROS 2**
 - **MuJoCo**
-
-All third-party software, SDKs, libraries, and dependencies remain subject to their respective licenses and terms of use.
 
 All third-party software, SDKs, libraries, and dependencies remain subject to their respective licenses and terms of use.
