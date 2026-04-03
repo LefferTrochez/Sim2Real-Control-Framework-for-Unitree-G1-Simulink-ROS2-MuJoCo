@@ -155,21 +155,13 @@ Department of Electrical and Electronic Engineering
 GIAP Research Group  
 Bogotá D.C., Colombia  
 <p>
-  <a href="mailto:l.trochez@uniandes.edu.co" style="text-decoration:none;">
-    <img src="images/Email.png" alt="Email" height="28" valign="middle">
-  </a>
+  <a href="mailto:l.trochez@uniandes.edu.co"><img src="images/Email.png" alt="Email" height="28" valign="middle"></a>
   &nbsp;
-  <a href="https://www.linkedin.com/in/leffer-trochez/" style="text-decoration:none;">
-    <img src="images/LinkedIn.png" alt="LinkedIn" height="28" valign="middle">
-  </a>
+  <a href="https://www.linkedin.com/in/leffer-trochez/"><img src="images/LinkedIn.png" alt="LinkedIn" height="28" valign="middle"></a>
   &nbsp;
-  <a href="https://scholar.google.com/citations?user=Ve1E4AEAAAAJ&hl=es&oi=ao" style="text-decoration:none;">
-    <img src="images/GoogleScholar.png" alt="Google Scholar" height="28" valign="middle">
-  </a>
+  <a href="https://scholar.google.com/citations?user=Ve1E4AEAAAAJ&hl=es&oi=ao"><img src="images/GoogleScholar.png" alt="Google Scholar" height="28" valign="middle"></a>
   &nbsp;
-  <a href="https://orcid.org/0009-0002-5321-7652" style="text-decoration:none;">
-    <img src="images/ORCID.png" alt="ORCID" height="28" valign="middle">
-  </a>
+  <a href="https://orcid.org/0009-0002-5321-7652"><img src="images/ORCID.png" alt="ORCID" height="28" valign="middle"></a>
 </p>
 
 ---
