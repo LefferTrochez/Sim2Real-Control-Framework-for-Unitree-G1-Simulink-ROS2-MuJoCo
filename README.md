@@ -41,14 +41,18 @@ This repository presents Version 1.0 of a MATLAB/Simulink-based Sim2Real framewo
 
 ## Framework Overview
 
-The core idea of the framework is to allow the user to develop and organize control logic in **MATLAB/Simulink**, validate it in **MuJoCo**, and then transition toward **ROS 2**-based execution on the real **Unitree G1** while maintaining a common structure.
+The core idea of the framework is to allow the user to develop and organize control logic in MATLAB/Simulink, validate it in MuJoCo, and then transition toward ROS 2-based execution on the real Unitree G1 while maintaining a common structure.
 
-At the center of the repository is a **Sim2Real Variant Subsystem**, which enables switching between:
+At the center of the repository is a Sim2Real Variant Subsystem, which enables switching between:
 
 - **MuJoCo**, for simulation-based development and testing
 - **ROS 2**, for communication and deployment with the real robot
 
 This design keeps the overall workflow modular, structured, and reusable.
+
+<p align="center">
+  <img src="images/Sim2Real.png" alt="Sim2Real Logo" width="500">
+</p>
 
 ---
 
