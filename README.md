@@ -147,41 +147,66 @@ This project is built around the following technologies:
 ## Contact
 
 **Leffer Trochez**  
-Universidad de los Andes, GIAP Research Group
+M.Sc. Thesis Researcher  
+Universidad de los Andes  
+Faculty of Engineering  
+Department of Electrical and Electronic Engineering  
+GIAP Research Group  
+Bogotá D.C., Colombia  
 
-**Email:** your_email_here  
-**LinkedIn:** your_linkedin_here
+- **Email:** [l.trochez@uniandes.edu.co](mailto:l.trochez@uniandes.edu.co)
+- **LinkedIn:** [leffer-trochez](https://www.linkedin.com/in/leffer-trochez/)
+- **GitHub:** [LefferTrochez](https://github.com/LefferTrochez)
+- **ORCID:** [0009-0002-5321-7652](https://orcid.org/0009-0002-5321-7652)
 
 ---
 
 ## Citation
 
-If you use this repository in academic work, please cite the associated repository and future software record.
+If you use this repository in academic work, research projects, technical reports, or derivative software developments, please cite it appropriately.
 
-A `CITATION.cff` file will be added to this repository, and a DOI-based citation is planned for a future release.
+This repository includes a `CITATION.cff` file so that GitHub can expose a standard citation format through the **Cite this repository** feature. A DOI-based citation will be added once a public release is archived through Zenodo.
 
 ### How to cite
 
-You may cite this project in the following format until a DOI is available:
+Until a DOI is available, the repository can be cited as software in the following format:
 
 ```bibtex
 @software{trochez2026sim2real,
-  author       = {Leffer Trochez},
+  author       = {Leffer Trochez and Nicanor Quijano and Jorge Lopez-Jimenez and Carlos Francisco Rodriguez},
   title        = {A MATLAB/Simulink-Based Sim2Real Control Framework for the Unitree G1 Using ROS 2 and MuJoCo},
   year         = {2026},
-  institution  = {Universidad de los Andes, GIAP Research Group},
   version      = {1.0},
-  url          = {https://github.com/your-username/your-repository-name}
+  institution  = {Universidad de los Andes},
+  url          = {https://github.com/LefferTrochez/Sim2Real-Control-Framework-for-Unitree-G1-Simulink-ROS2-MuJoCo}
 }
 ```
 
-Once a DOI is generated, this section can be updated with the final citation entry.
+### Citation note
+
+If this framework contributes to a thesis, paper, report, or software-based research output, please cite the repository and, once available, its DOI-linked release record.
 
 ---
 
 ## License
 
-This project is licensed under the Apache License 2.0. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the **Apache License 2.0**. See the [LICENSE](LICENSE) file for the full license text.
+
+
+---
+
+## Acknowledgments
+
+This project builds upon or interacts with the following technologies and platforms:
+
+- **Unitree Robotics**
+- **MathWorks**
+- **ROS 2**
+- **MuJoCo**
+
+The authors also acknowledge the academic and research environment of **Universidad de los Andes** and the support of the **GIAP Research Group**.
+
+All third-party software, SDKs, libraries, and dependencies remain subject to their respective licenses and terms of use.
 
 ---
 
