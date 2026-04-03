@@ -35,9 +35,7 @@
 
 ## Introduction
 
-This repository presents Version 1.0 of a MATLAB/Simulink-based Sim2Real framework for the Unitree G1 humanoid robot, integrating MuJoCo and ROS 2 within a unified workflow for controller development, simulation-based validation, visualization, and real-robot deployment.
-
-The main objective of this repository is to provide a clean and research-oriented framework that preserves a common high-level interface across both simulation and real-robot execution backends.
+This repository presents Version 1.0 of a MATLAB/Simulink-based Sim2Real framework for the Unitree G1 humanoid robot, integrating MuJoCo and ROS 2 within a unified workflow for controller development, simulation-based validation, visualization, and real-robot deployment. The main objective of this repository is to provide a clean and research-oriented framework that preserves a common high-level interface across both simulation and real-robot execution backends.
 
 ---
 
@@ -64,54 +62,12 @@ The repository is organized as follows:
 
 ```text
 .
-├── images/
-└── material/
-    ├── examples/
-    ├── MuJoCo files/
-    ├── ROS 2 files/
-    └── Sim2Real files/
-```
-
-### `images/`
-
-This folder contains the figures used in the repository documentation, including the main welcome image shown at the top of this README.
-
-### `material/`
-
-This is the main technical folder of the repository. It contains the reusable framework base, the example files, the MuJoCo simulation resources, and the ROS 2 communication files.
-
----
-
-## Material Folder Contents
-
-### `examples/`
-
-This folder contains example files built on top of the original Sim2Real Variant Subsystem. The current example corresponds to a representative ankle-motion task, intended to show how the base framework can be reused and extended for specific demonstrations.
-
-### `MuJoCo files/`
-
-This folder contains the resources required for MuJoCo-based simulation, including the main XML robot model, the meshes folder, and additional files related to the simulator model and its structure.
-
-### `ROS 2 files/`
-
-This folder contains the custom ROS 2 message package together with the scripts required to create and generate those messages. These files provide the communication base needed by the framework for ROS 2 integration.
-
-### `Sim2Real files/`
-
-This folder contains the main reusable base of the project. It includes the original Sim2Real Variant Subsystem and the core Simulink support files required to initialize and use the framework. Users can take this folder as the starting point for building new examples, controllers, or extensions on top of the original framework structure.
-
----
-
-## Technologies Used
-
-This project is built around the following technologies:
-
-- MATLAB
-- Simulink
-- MuJoCo
-- ROS 2
-- ROS Toolbox
-- Simulink Blockset for MuJoCo Simulator
+├── images/                # Figures used in the documentation and README
+└── material/              # Main technical folder of the project
+    ├── examples/          # Example files built on top of the original Sim2Real framework (ankle-motion example)
+    ├── MuJoCo files/      # MuJoCo simulation resources, XML robot model, meshes, and related files
+    ├── ROS 2 files/       # Custom Unitree ROS 2 messages and scripts for message generation/integration
+    └── Sim2Real files/    # Core reusable Sim2Real base, Variant Subsystem, and support files
 
 ---
 
@@ -171,6 +127,19 @@ Planned future developments include:
 - Improving integration with additional sensors and subsystems
 - Extending the framework with more advanced humanoid control modules
 - Incorporating additional validation cases in both simulation and real-robot execution
+
+---
+
+## Technologies Used
+
+This project is built around the following technologies:
+
+- MATLAB
+- Simulink
+- MuJoCo
+- ROS 2
+- ROS Toolbox
+- Simulink Blockset for MuJoCo Simulator
 
 ---
 
