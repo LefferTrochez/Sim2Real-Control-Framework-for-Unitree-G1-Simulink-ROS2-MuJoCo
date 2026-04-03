@@ -154,11 +154,18 @@ Faculty of Engineering
 Department of Electrical and Electronic Engineering  
 GIAP Research Group  
 Bogotá D.C., Colombia  
-
-- **Email:** [l.trochez@uniandes.edu.co](mailto:l.trochez@uniandes.edu.co)
-- **LinkedIn:** [leffer-trochez](https://www.linkedin.com/in/leffer-trochez/)
-- **Google Scholar:** [Leffer Trochez](https://scholar.google.com/citations?user=Ve1E4AEAAAAJ&hl=es&oi=ao)
-- **ORCID:** [0009-0002-5321-7652](https://orcid.org/0009-0002-5321-7652)
+<p>
+  <a href="mailto:l.trochez@uniandes.edu.co">
+    <img src="images/Email.png" alt="Email" height="28">
+  </a>
+  &nbsp;
+  <a href="https://www.linkedin.com/in/leffer-trochez/">
+    <img src="images/LinkedIn.png" alt="LinkedIn" height="28">
+  </a>
+  &nbsp;
+  <a href="https://scholar.google.com/citations?user=Ve1E4AEAAAAJ&hl=es&oi=ao">
+    <img src="images/GoogleScholar.png" alt="Google Scholar" height="28">
+  </a>
 
 ---
 
