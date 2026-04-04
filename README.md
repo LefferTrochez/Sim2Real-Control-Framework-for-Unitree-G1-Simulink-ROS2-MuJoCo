@@ -257,13 +257,9 @@ To run the framework on the real Unitree G1 platform:
 
 ### Robot-Side Networking Note
 
-For lower-latency and more stable communication, this workflow is intended to be used over Ethernet when running the model on the real robot. Wireless communication may also be possible, but it can introduce additional latency, packet loss, or connection instability depending on the network conditions.
+For lower-latency and more stable communication, this workflow is intended to be used over Ethernet when running the model on the real robot. Wireless communication may also be possible, but it can introduce additional latency or instability depending on the network conditions.
 
-If communication with the robot does not work correctly, confirm the Ethernet configuration, robot network settings, and ROS 2 middleware setup before running the model.
-
-A manual IPv4 configuration may be required on the host machine. The exact subnet and IP range can vary depending on the robot, network setup, or vendor-side configuration, so they should be adjusted according to the specific communication settings of the target platform.
-
-A typical Windows navigation path for manual IPv4 configuration is:
+If communication with the robot does not work correctly, confirm the Ethernet configuration, robot network settings, and ROS 2 middleware setup before running the model. A manual IPv4 configuration may be required on the host machine. The exact subnet and IP range can vary depending on the robot and network configuration. In the setup used for this project, addresses in the form `192.168.123.x` were used, where `x` is a valid host number, for example `192.168.123.100`. A typical Windows navigation path for manual IPv4 configuration is:
 
 `Control Panel → Network and Internet → Network and Sharing Center → Change adapter settings → Ethernet → Properties → Internet Protocol Version 4 (TCP/IPv4) → Use the following IP address`
 
