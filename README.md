@@ -430,6 +430,7 @@ The current framework uses different channel counts depending on the role of eac
     diaginertia="7.515e-06 6.40206e-06 3.98394e-06" />
   <joint name="waist_roll_joint" pos="0 0 0" axis="1 0 0" limited="true" range="0 1e-6"
     actuatorfrcrange="-50 50" class="torso_motor"/>  <!-- range="-0.52 0.52" -->
+```
 
 would need to be updated by replacing `range="0 1e-6"` with `range="-0.52 0.52"` and removing `limited="true"`, in addition to updating the corresponding framework-side constraint definitions.
 
