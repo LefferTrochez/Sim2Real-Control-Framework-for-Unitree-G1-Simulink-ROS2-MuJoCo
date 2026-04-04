@@ -54,21 +54,14 @@ This design keeps the overall workflow modular, structured, and reusable.
 
 ---
 
+
 ## Representative Example: Ankle Motion
 
 This repository includes a representative ankle-motion example used to validate the Sim2Real workflow in a simple and clear way.
 
 In this example, a standard ankle motion command is first tested in MuJoCo and then executed on the real Unitree G1 through the same framework structure. The goal is to show that the same high-level workflow can be reused across simulation and real-robot execution without changing the overall organization of the framework.
 
-This example serves as a minimal demonstration of the following idea:
-
-- design and organize the task in Simulink
-- validate the behavior in MuJoCo
-- transfer the same workflow to the real robot through ROS 2
-
-### Example Video
-
-[Watch the Sim2Real ankle motion video](videos/Sim2Real%20ankle%20motion.mp4)
+https://github.com/user-attachments/assets/04d95202-4c3e-444c-940a-4de99ef791b5
 
 ---
 
