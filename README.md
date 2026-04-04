@@ -482,7 +482,7 @@ Planned future developments include:
 ## Contact
 
 Leffer Trochez <br>
-Electronic Engineer and M.Sc. in Electronic and Computer Engineering  
+Electronic Engineer, M.Sc. in Electronic and Computer Engineering, and Admitted to the Ph.D. in Engineering 
 Universidad de los Andes  
 Faculty of Engineering  
 Department of Electrical and Electronic Engineering  
