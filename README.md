@@ -519,7 +519,7 @@ The repository can be cited as software in the following format:
   doi          = {10.5281/zenodo.19422874},
   url          = {https://doi.org/10.5281/zenodo.19422874}
 }
-
+```
 ### Citation note
 
 
