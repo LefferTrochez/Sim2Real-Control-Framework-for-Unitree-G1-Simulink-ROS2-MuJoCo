@@ -26,6 +26,7 @@ authors:
     affiliation: "Universidad de los Andes, Faculty of Engineering, Department of Mechanical Engineering, Bogotá D.C., Colombia"
 
 version: "1.0"
+doi: "10.5281/zenodo.19422874"
 date-released: 2026-04-03
 license: "Apache-2.0"
 
