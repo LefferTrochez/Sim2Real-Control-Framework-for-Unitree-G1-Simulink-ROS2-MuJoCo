@@ -35,7 +35,7 @@
 
 ## Introduction
 
-This repository presents Version 1.0 of a MATLAB/Simulink-based Sim2Real framework for the Unitree G1 humanoid robot, integrating MuJoCo and ROS 2 within a unified workflow for controller development, simulation-based validation, visualization, and real-robot deployment. The main objective of this repository is to provide a clean and research-oriented framework that preserves a common high-level interface across both simulation and real-robot execution backends.
+This repository presents Version 1.0 of a MATLAB/Simulink-based Sim2Real framework for the Unitree G1 humanoid robot, integrating MuJoCo and ROS 2 within a unified workflow for controller development, simulation-based validation, visualization, and real-robot deployment. The main objective of this repository is to provide a clean and control-oriented framework that preserves a common high-level interface across both simulation and real-robot execution backends.
 
 ---
 
@@ -57,9 +57,7 @@ This design keeps the overall workflow modular, structured, and reusable.
 
 ## Representative Example: Ankle Motion
 
-This repository includes a representative ankle-motion example used to validate the Sim2Real workflow in a simple and clear way.
-
-In this example, a standard ankle motion command is first tested in MuJoCo and then executed on the real Unitree G1 through the same framework structure. The goal is to show that the same high-level workflow can be reused across simulation and real-robot execution without changing the overall organization of the framework.
+This repository includes a standard ankle-motion command task example used to validate the Sim2Real workflow in a simple and clear way. In this example, the goal is to show that the same high-level workflow can be reused across simulation and real-robot execution without changing the overall organization of the framework. This also highlights the simplicity and modularity of the framework from a block-based perspective, where new control implementations can be tested through a straightforward procedure: select the execution mode, update the model, and run it.
 
 https://github.com/user-attachments/assets/04d95202-4c3e-444c-940a-4de99ef791b5
 
@@ -70,9 +68,10 @@ https://github.com/user-attachments/assets/04d95202-4c3e-444c-940a-4de99ef791b5
 The repository is organized as follows:
 
 ```text
-
-├── images/              # Figures used in the documentation and README
-└── material/            # Main technical folder of the project
+.
+├── docs/                # GitHub Pages source files for the project website
+├── images/              # Figures, logos, and visual assets used in the README and documentation
+└── resources/           # Main technical folder of the project
     ├── examples/        # Example files built on top of the original Sim2Real framework (ankle-motion)
     ├── MuJoCo files/    # MuJoCo simulation resources, XML robot model, meshes, and related files
     ├── ROS 2 files/     # Custom Unitree ROS 2 messages and scripts for message generation/integration
