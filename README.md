@@ -50,17 +50,7 @@ The core idea of the framework is to allow the user to develop and organize cont
   <img src="images/Sim2Real.png" alt="Sim2Real Logo" width="300">
 </p>
 
-This design keeps the overall workflow modular, structured, and reusable. In addition to the Variant Subsystem logic, the repository is organized around three main technical folders that support the full workflow depending on the selected `RUN_MODE`:
-
-- `MuJoCo files/` contains the simulation-side resources used when the framework runs in MuJoCo. This includes the robot XML model, auxiliary files, and the `meshes/` folder, which must remain in the same directory as the XML for the model to load correctly. The MuJoCo model is based on the [Unitree G1 model from MuJoCo Menagerie](https://github.com/google-deepmind/mujoco_menagerie/tree/main/unitree_g1), but it was modified for this project. In particular, torso attachment points were added so the robot can be supported by a virtual crane during initialization. This was done to reproduce the same practical procedure used on the real robot, which is initially started while suspended. The MuJoCo-side environment therefore includes both the modified XML and a control function inside the MuJoCo Subsystem to actuate the virtual crane for lifting, lowering, and releasing the robot.
-- `ROS 2 files/` contains the communication-side resources used when the framework runs with the real robot. This includes the `unitree_hg` custom message package required for this platform, as well as MATLAB scripts for generating and integrating the custom ROS 2 messages used by the Simulink model.
-- `Sim2Real files/` contains the core reusable base of the framework. This is the main folder for building new implementations on top of the repository. It includes the base Simulink model `Sim2Real_variant_subsystem.slx` together with the live scripts that initialize and configure the environment:
-  - `launcher.mlx`: main initialization script that calls the other required live scripts and prepares the model workspace.
-  - `sim2real_config.mlx`: defines the main configuration parameters used by the framework.
-  - `bus_definitions.mlx`: creates the Simulink bus objects used to keep signal organization structured and consistent.
-  - `g1_constraints.mlx`: defines joint limits, channel groupings, and constraint-related parameters for the Unitree G1.
-
-Together, these folders provide the base structure for developing new control implementations in a modular way. The `Sim2Real files/` folder defines the reusable framework itself, while the `MuJoCo files/` and `ROS 2 files/` folders complement that base according to the backend selected through `RUN_MODE`.
+This design keeps the overall workflow modular, structured, and reusable. 
 
 ---
 
@@ -93,6 +83,18 @@ The repository is organized as follows:
 ├── LICENSE              # Apache-2.0 license
 └── README.md            # Main project documentation
 ```
+
+In addition to the Variant Subsystem logic, the repository is organized around three main technical folders that support the full workflow depending on the selected `RUN_MODE`:
+
+- `MuJoCo files/` contains the simulation-side resources used when the framework runs in MuJoCo. This includes the robot XML model, auxiliary files, and the `meshes/` folder, which must remain in the same directory as the XML for the model to load correctly. The MuJoCo model is based on the [Unitree G1 model from MuJoCo Menagerie](https://github.com/google-deepmind/mujoco_menagerie/tree/main/unitree_g1), but it was modified for this project. In particular, torso attachment points were added so the robot can be supported by a virtual crane during initialization. This was done to reproduce the same practical procedure used on the real robot, which is initially started while suspended. The MuJoCo-side environment therefore includes both the modified XML and a control function inside the MuJoCo Subsystem to actuate the virtual crane for lifting, lowering, and releasing the robot.
+- `ROS 2 files/` contains the communication-side resources used when the framework runs with the real robot. This includes the `unitree_hg` custom message package required for this platform, as well as MATLAB scripts for generating and integrating the custom ROS 2 messages used by the Simulink model.
+- `Sim2Real files/` contains the core reusable base of the framework. This is the main folder for building new implementations on top of the repository. It includes the base Simulink model `Sim2Real_variant_subsystem.slx` together with the live scripts that initialize and configure the environment:
+  - `launcher.mlx`: main initialization script that calls the other required live scripts and prepares the model workspace.
+  - `sim2real_config.mlx`: defines the main configuration parameters used by the framework.
+  - `bus_definitions.mlx`: creates the Simulink bus objects used to keep signal organization structured and consistent.
+  - `g1_constraints.mlx`: defines joint limits, channel groupings, and constraint-related parameters for the Unitree G1.
+
+Together, these folders provide the base structure for developing new control implementations in a modular way. The `Sim2Real files/` folder defines the reusable framework itself, while the `MuJoCo files/` and `ROS 2 files/` folders complement that base according to the backend selected through `RUN_MODE`.
 
 ---
 
