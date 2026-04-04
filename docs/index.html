@@ -10,7 +10,7 @@
 <body>
   <header class="hero">
     <div class="container">
-      <p class="eyebrow">ICRA 2026 Project Page</p>
+      <p class="eyebrow">Repository Project Page</p>
       <h1>A MATLAB/Simulink-Based Sim2Real Control Framework for the Unitree G1 Using ROS 2 and MuJoCo</h1>
       <p class="subtitle">
         A unified model-based environment for implementing, validating, debugging, and transferring humanoid control strategies from simulation to the real robot.
@@ -26,6 +26,7 @@
   <main>
     <section class="section" id="overview">
       <div class="container">
+        <h2>Unified Sim2Real Development Pipeline</h2>
         <img src="assets/Pipeline.png" alt="Sim2Real pipeline for the Unitree G1 framework" class="hero-image" />
       </div>
     </section>
@@ -42,6 +43,7 @@
               Faculty of Engineering<br>
               Department of Electrical and Electronic Engineering
             </p>
+            <p class="author-role">GIAP Research Member</p>
             <a class="author-link" href="https://scholar.google.com/citations?user=Ve1E4AEAAAAJ&hl=es&oi=ao" target="_blank" rel="noopener noreferrer">Google Scholar</a>
           </article>
 
@@ -53,17 +55,19 @@
               Faculty of Engineering<br>
               Department of Electrical and Electronic Engineering
             </p>
+            <p class="author-role">GIAP Director</p>
             <a class="author-link" href="https://scholar.google.com/citations?user=xu0jdYAAAAAJ&hl=es&oi=ao" target="_blank" rel="noopener noreferrer">Google Scholar</a>
           </article>
 
           <article class="card author-card">
             <img src="assets/JorgeLopezJimenez.jpeg" alt="Jorge Lopez Jimenez" class="author-photo" />
-            <h3>Jorge Lopez-Jimenez</h3>
+            <h3>Jorge Lopez Jimenez</h3>
             <p class="author-affiliation">
               Universidad de los Andes<br>
               Faculty of Engineering<br>
               Department of Electrical and Electronic Engineering
             </p>
+            <p class="author-role">GIAP Research Member</p>
             <a class="author-link" href="https://scholar.google.com/citations?user=FP09HO0AAAAJ&hl=es&oi=ao" target="_blank" rel="noopener noreferrer">Google Scholar</a>
           </article>
 
@@ -84,7 +88,7 @@
     <section class="section alt" id="abstract">
       <div class="container narrow">
         <h2>Abstract</h2>
-        <p>
+        <p class="justified-text">
           Control research on humanoid robots requires environments where control strategies can be designed, tuned, debugged, validated, and transferred to real hardware with minimal friction. For commercial platforms such as the Unitree G1, this process is often fragmented across separate tools for modeling, simulation, communication, visualization, and deployment, slowing down controller development and experimental iteration. This work presents a MATLAB/Simulink-based Sim2Real framework for the Unitree G1 that integrates MuJoCo and ROS 2 into a unified workflow for control-oriented research. The framework is organized around a modular Variant Subsystem that switches between a MuJoCo simulation backend and a ROS 2 real-robot backend while preserving compatible interfaces, enabling reuse of high-level control logic, monitoring, and system instrumentation across both domains. As a representative example, a standard ankle motion command task was validated both in simulation and on the real robot. The proposed framework establishes a practical model-based environment for implementing and evaluating control strategies on the Unitree G1, while providing an extensible basis for future estimation, stabilization, perception, and humanoid control modules.
         </p>
       </div>
@@ -144,23 +148,18 @@
     <section class="section" id="links">
       <div class="container">
         <h2>Project Links</h2>
-        <div class="link-grid">
-          <a class="link-card" href="https://github.com/LefferTrochez/Sim2Real-Control-Framework-for-Unitree-G1-Simulink-ROS2-MuJoCo" target="_blank" rel="noopener noreferrer">
+        <div class="cards project-link-cards">
+          <a class="card link-card" href="https://github.com/LefferTrochez/Sim2Real-Control-Framework-for-Unitree-G1-Simulink-ROS2-MuJoCo" target="_blank" rel="noopener noreferrer">
             <span class="link-title">GitHub Repository</span>
             <span class="link-desc">Source code, resources, documentation, and demo material.</span>
           </a>
 
-          <a class="link-card" href="https://github.com/LefferTrochez/Sim2Real-Control-Framework-for-Unitree-G1-Simulink-ROS2-MuJoCo/blob/main/ICRA%202026%20poster.pdf" target="_blank" rel="noopener noreferrer">
+          <a class="card link-card" href="https://github.com/LefferTrochez/Sim2Real-Control-Framework-for-Unitree-G1-Simulink-ROS2-MuJoCo/blob/main/ICRA%202026%20poster.pdf" target="_blank" rel="noopener noreferrer">
             <span class="link-title">Poster</span>
             <span class="link-desc">ICRA 2026 poster PDF for the project.</span>
           </a>
 
-          <a class="link-card" href="https://github.com/LefferTrochez/Sim2Real-Control-Framework-for-Unitree-G1-Simulink-ROS2-MuJoCo/blob/main/Abstract.pdf" target="_blank" rel="noopener noreferrer">
-            <span class="link-title">Abstract</span>
-            <span class="link-desc">Abstract PDF associated with the project submission.</span>
-          </a>
-
-          <a class="link-card" href="https://doi.org/10.5281/zenodo.19422874" target="_blank" rel="noopener noreferrer">
+          <a class="card link-card" href="https://doi.org/10.5281/zenodo.19422874" target="_blank" rel="noopener noreferrer">
             <span class="link-title">DOI / Zenodo</span>
             <span class="link-desc">Archived public release with persistent DOI citation.</span>
           </a>
@@ -172,7 +171,7 @@
       <div class="container narrow">
         <h2>Contact</h2>
         <p><strong>Leffer Trochez</strong></p>
-        <p>Electronic Engineer and M.Sc. in Electronic and Computer Engineering</p>
+        <p>Electronic Engineer, M.Sc. in Electronic and Computer Engineering, and Admitted to the Ph.D. in Engineering.</p>
         <p>Universidad de los Andes</p>
         <p>Faculty of Engineering</p>
         <p>Department of Electrical and Electronic Engineering</p>
