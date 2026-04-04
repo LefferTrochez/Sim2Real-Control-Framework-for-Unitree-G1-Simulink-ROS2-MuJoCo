@@ -168,7 +168,7 @@ The second command is useful to verify that MuJoCo was installed correctly in th
 
 ### ROS Toolbox Setup
 
-Install ROS Toolbox from the MATLAB Add-On Explorer. If ROS-related features do not work correctly, recreate the Python environment from MATLAB settings and explicitly point it to your local Python installation. A typical path looks like this:
+Install ROS Toolbox from the MATLAB Add-On Explorer, and make sure your system satisfies the official [ROS Toolbox system requirements](https://la.mathworks.com/help/ros/gs/ros-system-requirements.html). If ROS-related features do not work correctly, recreate the Python environment from MATLAB by going to Home > Settings > ROS Toolbox and explicitly pointing it to your local Python installation. A typical path looks like this:
 
 ```text
 C:\Users\YOUR_USERNAME\AppData\Local\Programs\Python\Python39\python.exe
