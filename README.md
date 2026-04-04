@@ -11,6 +11,7 @@
   <img src="https://img.shields.io/badge/ROS2-Supported-blue" alt="ROS 2">
   <img src="https://img.shields.io/badge/MuJoCo-Integrated-green" alt="MuJoCo">
   <img src="https://img.shields.io/badge/license-Apache--2.0-red" alt="License">
+  <a href="https://doi.org/10.5281/zenodo.19422873"><img src="https://zenodo.org/badge/1200109573.svg" alt="DOI"></a>
 </p>
 
 ---
