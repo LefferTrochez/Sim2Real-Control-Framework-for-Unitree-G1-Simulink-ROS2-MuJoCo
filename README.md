@@ -4,29 +4,14 @@
   <img src="images/Pipeline.png" alt="Sim2Real Pipeline" width="900">
 </p>
 
-
 <p align="center">
-  <a href="https://github.com/LefferTrochez/Sim2Real-Control-Framework-for-Unitree-G1-Simulink-ROS2-MuJoCo/releases/tag/v1.0.0" style="text-decoration: none;">
-    <img src="https://img.shields.io/badge/version-1.0-blue" alt="Version">
-  </a>
-  <a href="https://www.mathworks.com/products/matlab.html" style="text-decoration: none;">
-    <img src="https://img.shields.io/badge/MATLAB-Supported-orange" alt="MATLAB">
-  </a>
-  <a href="https://www.mathworks.com/products/simulink.html" style="text-decoration: none;">
-    <img src="https://img.shields.io/badge/Simulink-Based-orange" alt="Simulink">
-  </a>
-  <a href="https://docs.ros.org/" style="text-decoration: none;">
-    <img src="https://img.shields.io/badge/ROS2-Supported-blue" alt="ROS 2">
-  </a>
-  <a href="https://mujoco.readthedocs.io/" style="text-decoration: none;">
-    <img src="https://img.shields.io/badge/MuJoCo-Integrated-green" alt="MuJoCo">
-  </a>
-  <a href="LICENSE" style="text-decoration: none;">
-    <img src="https://img.shields.io/badge/license-Apache--2.0-red" alt="License">
-  </a>
-  <a href="https://doi.org/10.5281/zenodo.19422874" style="text-decoration: none;">
-    <img src="https://zenodo.org/badge/1200109573.svg" alt="DOI">
-  </a>
+  <a href="https://github.com/LefferTrochez/Sim2Real-Control-Framework-for-Unitree-G1-Simulink-ROS2-MuJoCo/releases/tag/v1.0.0"><img src="https://img.shields.io/badge/version-1.0-blue" alt="Version" valign="middle"></a>
+  <a href="https://www.mathworks.com/products/matlab.html"><img src="https://img.shields.io/badge/MATLAB-Supported-orange" alt="MATLAB" valign="middle"></a>
+  <a href="https://www.mathworks.com/products/simulink.html"><img src="https://img.shields.io/badge/Simulink-Based-orange" alt="Simulink" valign="middle"></a>
+  <a href="https://docs.ros.org/"><img src="https://img.shields.io/badge/ROS2-Supported-blue" alt="ROS 2" valign="middle"></a>
+  <a href="https://mujoco.readthedocs.io/"><img src="https://img.shields.io/badge/MuJoCo-Integrated-green" alt="MuJoCo" valign="middle"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-Apache--2.0-red" alt="License" valign="middle"></a>
+  <a href="https://doi.org/10.5281/zenodo.19422874"><img src="https://zenodo.org/badge/1200109573.svg" alt="DOI" valign="middle"></a>
 </p>
 
 ---
