@@ -537,7 +537,7 @@ This project is licensed under the Apache License 2.0. See the [LICENSE](LICENSE
 
 ## Acknowledgments
 
-The author would like to express sincere gratitude to [Manoj Vasudevan](https://vmanoj1996.github.io/) for having planted the initial seed of this work through the MuJoCo Simulink Blockset, which provided an important foundation and early inspiration for the development of this framework.
+The author would like to express sincere gratitude to [Manoj Velmurugan](https://vmanoj1996.github.io/) for having planted the initial seed of this work through the MuJoCo Simulink Blockset, which provided an important foundation and early inspiration for the development of this framework.
 
 In addition, the author gratefully acknowledges [Álvaro Achury](https://academia.uniandes.edu.co/AcademyCv/au.achury33), leader of the laboratories and caretaker of the humanoid robot platform at Universidad de los Andes (AURA), for his valuable assistance in the handling and operation of the real robot platform.
 
