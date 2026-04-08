@@ -28,9 +28,9 @@ authors:
     affiliation: "Universidad de los Andes, Faculty of Engineering, Department of Mechanical Engineering, Bogotá D.C., Colombia"
     orcid: "https://orcid.org/0000-0002-7438-8963"
 
-version: "1.0"
-doi: "10.5281/zenodo.19422874"
-date-released: 2026-04-03
+version: "1.1.0"
+doi: "10.5281/zenodo.19462940"
+date-released: 2026-04-07
 license: "Apache-2.0"
 
 repository-code: "https://github.com/LefferTrochez/Sim2Real-Control-Framework-for-Unitree-G1-Simulink-ROS2-MuJoCo"
