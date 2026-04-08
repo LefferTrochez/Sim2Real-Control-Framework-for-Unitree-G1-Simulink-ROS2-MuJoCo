@@ -73,19 +73,20 @@ The repository is organized as follows:
 
 ```text
 .
-├── docs/                # GitHub Pages source files for the project website
-├── images/              # Figures, logos, and visual assets used in the README and documentation
-├── resources/           # Main technical folder of the project
-│   ├── examples/        # Example files built on top of the original Sim2Real framework (ankle-motion)
-│   ├── MuJoCo files/    # MuJoCo simulation resources, XML robot model, meshes, and related files
-│   ├── ROS 2 files/     # Custom Unitree ROS 2 messages and scripts for message generation/integration
-│   └── Sim2Real files/  # Core reusable Sim2Real base, Variant Subsystem, and support files
-├── videos/              # Video assets and demonstration media used by the project
-├── Abstract.pdf         # Project abstract / submission summary
-├── ICRA 2026 poster.pdf # Poster version 1.0 of the project
-├── CITATION.cff         # Citation metadata for academic referencing
-├── LICENSE              # Apache-2.0 license
-└── README.md            # Main project documentation
+├── docs/                 # GitHub Pages source files for the project website
+├── images/               # Figures, logos, and visual assets used in the README and documentation
+├── resources/            # Main technical folder of the project
+│   ├── examples/         # Example files built on top of the original Sim2Real framework (ankle-motion)
+│   ├── MuJoCo files/     # MuJoCo simulation resources, XML robot model, meshes, and related files
+│   ├── ROS 2 files/      # Custom Unitree ROS 2 messages and scripts for message generation/integration
+│   └── Sim2Real files/   # Core reusable Sim2Real base, Variant Subsystem, and support files
+├── videos/               # Video assets and demonstration media used by the project
+├── Abstract.pdf          # Submission summary project abstract
+├── CITATION.cff          # Citation metadata for academic referencing
+├── Extended Abstract.pdf # Submission project abstract
+├── ICRA 2026 poster.pdf  # Poster version 1.0 of the project
+├── LICENSE               # Apache-2.0 license
+└── README.md             # Main project documentation
 ```
 
 In addition to the Variant Subsystem logic, the repository is organized around three main technical folders that support the full workflow depending on the selected `RUN_MODE`:
