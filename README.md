@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/LefferTrochez/Sim2Real-Control-Framework-for-Unitree-G1-Simulink-ROS2-MuJoCo/releases/tag/v1.1.0"><img src="https://img.shields.io/badge/version-1.1-blue" alt="Version" valign="middle"></a>
+  <a href="https://github.com/LefferTrochez/Sim2Real-Control-Framework-for-Unitree-G1-Simulink-ROS2-MuJoCo/releases/tag/v1.1.0"><img src="https://img.shields.io/badge/version-1.2.0-blue" alt="Version" valign="middle"></a>
   <a href="https://www.mathworks.com/products/matlab.html"><img src="https://img.shields.io/badge/MATLAB-Supported-orange" alt="MATLAB" valign="middle"></a>
   <a href="https://www.mathworks.com/products/simulink.html"><img src="https://img.shields.io/badge/Simulink-Based-orange" alt="Simulink" valign="middle"></a>
   <a href="https://docs.ros.org/"><img src="https://img.shields.io/badge/ROS2-Supported-blue" alt="ROS 2" valign="middle"></a>
@@ -40,7 +40,7 @@
 
 ## Introduction
 
-This repository presents Version 1.1.0 of a MATLAB/Simulink-based Sim2Real framework for the Unitree G1 humanoid robot, integrating MuJoCo and ROS 2 within a unified workflow for controller development, simulation-based validation, visualization, and real-robot deployment. The main objective of this repository is to provide a clean and control-oriented framework that preserves a common high-level interface across both simulation and real-robot execution backends.
+This repository presents Version 1.2.0 of a MATLAB/Simulink-based Sim2Real framework for the Unitree G1 humanoid robot, integrating MuJoCo and ROS 2 within a unified workflow for controller development, simulation-based validation, visualization, and real-robot deployment. The main objective of this repository is to provide a clean and control-oriented framework that preserves a common high-level interface across both simulation and real-robot execution backends.
 
 ---
 
@@ -84,7 +84,7 @@ The repository is organized as follows:
 ├── Abstract.pdf          # Submission summary project abstract
 ├── CITATION.cff          # Citation metadata for academic referencing
 ├── Extended Abstract.pdf # Submission project abstract
-├── ICRA 2026 poster.pdf  # Poster version 1.0 of the project
+├── ICRA 2026 poster.pdf  # Poster version v1.0 of the project
 ├── LICENSE               # Apache-2.0 license
 └── README.md             # Main project documentation
 ```
@@ -517,7 +517,7 @@ The repository can be cited as software in the following format:
   author       = {Leffer Trochez and Nicanor Quijano and Jorge Lopez-Jimenez and Carlos Francisco Rodriguez},
   title        = {A MATLAB/Simulink-Based Sim2Real Control Framework for the Unitree G1 Using ROS 2 and MuJoCo},
   year         = {2026},
-  version      = {1.1.0},
+  version      = {1.2.0},
   doi          = {10.5281/zenodo.19462940},
   url          = {https://doi.org/10.5281/zenodo.19462940}
 }
