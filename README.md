@@ -81,6 +81,7 @@ The repository is organized as follows:
 │   ├── ROS 2 files/      # Custom Unitree ROS 2 messages and scripts for message generation/integration
 │   └── Sim2Real files/   # Core reusable Sim2Real base, Variant Subsystem, and support files
 ├── videos/               # Video assets and demonstration media used by the project
+├── results/              # Experimental figures, MATLAB scripts, and quantitative evaluation results
 ├── Abstract.pdf          # Submission summary project abstract
 ├── CITATION.cff          # Citation metadata for academic referencing
 ├── Extended Abstract.pdf # Submission project abstract
@@ -98,6 +99,7 @@ In addition to the Variant Subsystem logic, the repository is organized around t
   - `sim2real_config.mlx`: defines the main configuration parameters used by the framework.
   - `bus_definitions.mlx`: creates the Simulink bus objects used to keep signal organization structured and consistent.
   - `g1_constraints.mlx`: defines joint limits, channel groupings, and constraint-related parameters for the Unitree G1.
+- `results/` contains the experimental outputs associated with the representative Sim2Real ankle-motion validation. This includes MATLAB `.fig` files for simulated and experimental signals, plotting scripts, and quantitative evaluation scripts used to analyze tracking behavior and compare simulation and real-robot execution.
 
 Together, these folders provide the base structure for developing new control implementations in a modular way. The `Sim2Real files/` folder defines the reusable framework itself, while the `MuJoCo files/` and `ROS 2 files/` folders complement that base according to the backend selected through `RUN_MODE`.
 
