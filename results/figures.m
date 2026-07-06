@@ -52,7 +52,8 @@ plot_four_signals( ...
     'Position [rad]', ...
     t_min, t_max, x_margin, ...
     color_sim_pitch, color_sim_roll, color_exp_pitch, color_exp_roll, ...
-    [1 2]);
+    [1 2], ...
+    false);
 
 nexttile;
 plot_four_signals( ...
@@ -63,7 +64,8 @@ plot_four_signals( ...
     '\Delta_q [rad]', ...
     t_min, t_max, x_margin, ...
     color_sim_pitch, color_sim_roll, color_exp_pitch, color_exp_roll, ...
-    [2 1]);
+    [2 1], ...
+    true);
 
 drawnow;
 
@@ -110,7 +112,7 @@ function plot_reference_output_signals(sim_file, exp_file, ref_name, sim_name, e
 
 end
 
-function plot_four_signals(sim_file, exp_file, signal_names, plot_title, y_label, t_min, t_max, x_margin, color_sim_pitch, color_sim_roll, color_exp_pitch, color_exp_roll, signal_order)
+function plot_four_signals(sim_file, exp_file, signal_names, plot_title, y_label, t_min, t_max, x_margin, color_sim_pitch, color_sim_roll, color_exp_pitch, color_exp_roll, signal_order, smooth_exp_delta_q)
 
     [t_sim, y_sim] = read_curves_from_fig(sim_file);
     [t_exp, y_exp] = read_curves_from_fig(exp_file);
@@ -145,9 +147,16 @@ function plot_four_signals(sim_file, exp_file, signal_names, plot_title, y_label
 
         curve_idx = signal_order(i);
 
-        idx = t_exp{curve_idx} >= t_min & t_exp{curve_idx} <= t_max;
+        t_exp_curve = t_exp{curve_idx};
+        y_exp_curve = y_exp{curve_idx};
 
-        plot(t_exp{curve_idx}(idx), y_exp{curve_idx}(idx), '-', ...
+        if smooth_exp_delta_q
+            y_exp_curve = filter_experimental_delta_q(t_exp_curve, y_exp_curve);
+        end
+
+        idx = t_exp_curve >= t_min & t_exp_curve <= t_max;
+
+        plot(t_exp_curve(idx), y_exp_curve(idx), '-', ...
             'Color', colors_exp{i}, ...
             'LineWidth', 2.3, ...
             'DisplayName', ['Exp. ' signal_names{i}]);
@@ -158,6 +167,68 @@ function plot_four_signals(sim_file, exp_file, signal_names, plot_title, y_label
     title(plot_title);
     legend('Location','bestoutside');
     xlim([t_min - x_margin, t_max + x_margin]);
+
+end
+
+function y_filtered = filter_experimental_delta_q(t, y)
+
+    t = t(:);
+    y = y(:);
+
+    valid = ~isnan(t) & ~isnan(y);
+    t_valid = t(valid);
+    y_valid = y(valid);
+
+    if numel(y_valid) < 10
+        y_filtered = y;
+        return;
+    end
+
+    Ts = median(diff(t_valid));
+
+    if Ts <= 0 || isnan(Ts)
+        y_filtered = y;
+        return;
+    end
+
+    % Windows in seconds
+    outlier_window_time = 0.030;
+    median_window_time  = 0.040;
+    mean_window_time    = 0.070;
+
+    outlier_window = max(5, round(outlier_window_time / Ts));
+    median_window  = max(5, round(median_window_time / Ts));
+    mean_window    = max(5, round(mean_window_time / Ts));
+
+    % Use odd windows
+    if mod(outlier_window, 2) == 0
+        outlier_window = outlier_window + 1;
+    end
+
+    if mod(median_window, 2) == 0
+        median_window = median_window + 1;
+    end
+
+    if mod(mean_window, 2) == 0
+        mean_window = mean_window + 1;
+    end
+
+    % Fill missing values
+    y_clean = fillmissing(y, 'linear', 'EndValues', 'nearest');
+
+    % Remove sharp experimental spikes
+    y_no_outliers = filloutliers( ...
+        y_clean, ...
+        'linear', ...
+        'movmedian', ...
+        outlier_window, ...
+        'ThresholdFactor', 2.0);
+
+    % Reduce remaining impulsive peaks
+    y_median = smoothdata(y_no_outliers, 'movmedian', median_window);
+
+    % Final smooth visualization
+    y_filtered = smoothdata(y_median, 'movmean', mean_window);
 
 end
 
