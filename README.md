@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/LefferTrochez/Sim2Real-Control-Framework-for-Unitree-G1-Simulink-ROS2-MuJoCo/releases/tag/v1.2.0"><img src="https://img.shields.io/badge/version-1.2.0-blue" alt="Version" valign="middle"></a>
+  <a href="https://github.com/LefferTrochez/Sim2Real-Control-Framework-for-Unitree-G1-Simulink-ROS2-MuJoCo/releases/tag/v1.2.1"><img src="https://img.shields.io/badge/version-1.2.1-blue" alt="Version" valign="middle"></a>
   <a href="https://www.mathworks.com/products/matlab.html"><img src="https://img.shields.io/badge/MATLAB-Supported-orange" alt="MATLAB" valign="middle"></a>
   <a href="https://www.mathworks.com/products/simulink.html"><img src="https://img.shields.io/badge/Simulink-Based-orange" alt="Simulink" valign="middle"></a>
   <a href="https://docs.ros.org/"><img src="https://img.shields.io/badge/ROS2-Supported-blue" alt="ROS 2" valign="middle"></a>
@@ -40,7 +40,7 @@
 
 ## Introduction
 
-This repository presents Version 1.2.0 of a MATLAB/Simulink-based Sim2Real framework for the Unitree G1 humanoid robot, integrating MuJoCo and ROS 2 within a unified workflow for controller development, simulation-based validation, visualization, and real-robot deployment. The main objective of this repository is to provide a clean and control-oriented framework that preserves a common high-level interface across both simulation and real-robot execution backends.
+This repository presents Version 1.2.1 of a MATLAB/Simulink-based Sim2Real framework for the Unitree G1 humanoid robot, integrating MuJoCo and ROS 2 within a unified workflow for controller development, simulation-based validation, visualization, and real-robot deployment. The main objective of this repository is to provide a clean and control-oriented framework that preserves a common high-level interface across both simulation and real-robot execution backends.
 
 ---
 
@@ -76,6 +76,7 @@ The repository is organized as follows:
 ├── docs/                 # GitHub Pages source files for the project website
 ├── images/               # Figures, logos, and visual assets used in the README and documentation
 ├── resources/            # Main technical folder of the project
+│   ├── _generated/       # Auto-generated Simulink cache, codegen, and temporary build files
 │   ├── examples/         # Example files built on top of the original Sim2Real framework (ankle-motion)
 │   ├── MuJoCo files/     # MuJoCo simulation resources, XML robot model, meshes, and related files
 │   ├── ROS 2 files/      # Custom Unitree ROS 2 messages and scripts for message generation/integration
@@ -121,7 +122,7 @@ Additional notes:
 
 Before using the framework, make sure the following software is available on your machine:
 
-- MATLAB R2025b
+- MATLAB R2025a or newer
   - This workflow is intended for the desktop version of MATLAB. MATLAB Online is not supported.
 - MuJoCo 3.3.2
 - Python 3.9 or 3.10
@@ -299,7 +300,7 @@ Then restart MATLAB and verify that Visual Studio is selected as the active comp
 
 ### `mexhost` / `MATLABMexHost.exe` error in `mj_initbus.m`
 
-A possible issue in the MuJoCo blockset setup is a failure related to `mexhost`, where MATLAB cannot launch the isolated external MEX process.
+A possible issue in the MuJoCo blockset setup is a failure related to `mexhost`, where MATLAB cannot launch the isolated external MEX process used by the MuJoCo Simulink Blockset.
 
 A representative error may mention:
 
@@ -309,10 +310,12 @@ CreateProcessW
 The parameter is incorrect [system:87]
 ```
 
-In this case, a temporary workaround is to edit:
+This issue may be machine- and MATLAB-version-dependent. During testing, the same project and MuJoCo Simulink Blockset worked correctly on one computer but failed on another computer with MATLAB R2025b. On the affected machine, switching to MATLAB R2025a solved the `mexhost` / `MATLABMexHost.exe` problem. Therefore, if this error appears, first consider that it may be caused by the local MATLAB installation, MATLAB version, or machine configuration rather than by the XML model, MuJoCo files, or Sim2Real project files.
+
+As a temporary workaround, it is possible to edit:
 
 ```text
-/blocks/mj_initbus.m
+<PATH_TO_MUJOCO_SIMULINK_BLOCKSET>/blocks/mj_initbus.m
 ```
 
 and replace its behavior with a direct call to the MEX function:
@@ -325,6 +328,208 @@ end
 ```
 
 This workaround bypasses the external `mexhost` process and calls the MEX directly from MATLAB.
+
+> **Important note**  
+> This workaround is not the preferred long-term solution. Although it may allow the MuJoCo Plant block to initialize, modifying the MuJoCo blockset internals does not address the root cause of the `MATLABMexHost.exe` failure. It may also hide other environment problems. In particular, this workaround does not guarantee that ROS Toolbox or Simulink ROS 2 Publish/Subscribe blocks will work correctly if the underlying MATLAB installation is still unstable.
+
+#### Recommended solution
+
+The recommended solution is to use a MATLAB version in which `mexhost` works correctly on the target machine. If the error appears in MATLAB R2025b or newer on a specific computer, MATLAB R2025a can be used as a stable fallback if it works on that machine.
+
+A clean recovery procedure is:
+
+1. Install MATLAB R2025a or another MATLAB version verified to work on the target machine.
+
+2. If a previous MATLAB version was used, avoid mixing generated files across MATLAB versions. In particular, old ROS 2 custom-message build artifacts should be removed before regenerating custom messages.
+
+3. Rebuild the MuJoCo Simulink Blockset using the same MATLAB version that will run the project:
+
+```matlab
+cd("<PATH_TO_MUJOCO_SIMULINK_BLOCKSET>/tools")
+install
+setupBuild
+build
+```
+
+4. Verify that MATLAB is using the correct MuJoCo blockset files:
+
+```matlab
+which mj_initbus -all
+which mj_initbus_mex -all
+which mj_sfun -all
+```
+
+The expected output should point to the active local MuJoCo Simulink Blockset folder, for example:
+
+```text
+<PATH_TO_MUJOCO_SIMULINK_BLOCKSET>/blocks/mj_initbus.m
+<PATH_TO_MUJOCO_SIMULINK_BLOCKSET>/blocks/mj_initbus_mex.mexw64
+<PATH_TO_MUJOCO_SIMULINK_BLOCKSET>/blocks/mj_sfun.mexw64
+```
+
+5. If MATLAB was changed from one version to another, remove the old ROS 2 custom-message build folder before regenerating the messages:
+
+```matlab
+if exist("C:\\matlab_ros2_custom_msgs\\src\\matlab_msg_gen","dir")
+    rmdir("C:\\matlab_ros2_custom_msgs\\src\\matlab_msg_gen","s")
+end
+```
+
+Then regenerate the custom messages from the repository `ROS 2 files` folder:
+
+```matlab
+cd("<PROJECT_ROOT>/resources/ROS 2 files")
+generate_custom_msgs
+```
+
+This avoids mixing build artifacts generated by different MATLAB versions.
+
+6. If the Simulink models were saved in a newer MATLAB release, export them to the MATLAB version used on the target machine. For example, if running MATLAB R2025a, export `.slx` files from the newer MATLAB version using:
+
+```text
+File → Export Model To → Previous Version → R2025a
+```
+
+This is mainly required for `.slx` files. MATLAB `.m` files usually remain compatible unless they use functions introduced only in newer MATLAB releases.
+
+#### ROS Toolbox firewall permission for `libmwros2server.exe`
+
+When ROS Toolbox is used for the first time, Windows Firewall may ask for permission for:
+
+```text
+libmwros2server.exe
+```
+
+This executable is the internal ROS 2 server used by MATLAB and Simulink ROS 2 blocks. It must be allowed through the firewall for MATLAB to communicate correctly with external ROS 2 nodes and with the robot.
+
+If the firewall prompt appears, allow access for both:
+
+```text
+Private networks
+Public networks
+```
+
+If the prompt was closed accidentally or the wrong option was selected, add the permission manually:
+
+1. Close MATLAB.
+
+2. Open the Windows Start menu and search for:
+
+```text
+Allow an app through Windows Firewall
+```
+
+3. Open:
+
+```text
+Allow an app through Windows Firewall
+```
+
+4. Click:
+
+```text
+Change settings
+```
+
+5. Look for an existing entry named:
+
+```text
+libmwros2server
+```
+
+If multiple entries appear, they may correspond to different MATLAB versions. Select each entry and use **Details** to check which MATLAB installation it belongs to.
+
+6. For the MATLAB version currently being used, make sure both checkboxes are enabled:
+
+```text
+Private
+Public
+```
+
+7. If `libmwros2server` is not listed, click:
+
+```text
+Allow another app...
+```
+
+8. Click:
+
+```text
+Browse...
+```
+
+9. Navigate to the ROS Toolbox server executable for the active MATLAB version. A typical Windows path is:
+
+```text
+C:\Program Files\MATLAB\<MATLAB_VERSION>\toolbox\ros\bin\win64\libmwros2server.exe
+```
+
+For example, for MATLAB R2025a:
+
+```text
+C:\Program Files\MATLAB\R2025a\toolbox\ros\bin\win64\libmwros2server.exe
+```
+
+You can also find the exact path from MATLAB with:
+
+```matlab
+rosServer = fullfile(matlabroot,'toolbox','ros','bin','win64','libmwros2server.exe');
+disp(rosServer)
+winopen(fileparts(rosServer))
+```
+
+10. Add the executable and enable both:
+
+```text
+Private
+Public
+```
+
+11. Click:
+
+```text
+OK
+```
+
+12. Restart MATLAB and verify ROS 2 communication before opening Simulink:
+
+```matlab
+setenv("RMW_IMPLEMENTATION","rmw_cyclonedds_cpp")
+setenv("ROS_DOMAIN_ID","0")
+setenv("ROS_LOCALHOST_ONLY","0")
+
+topics = ros2("topic","list");
+disp(topics)
+```
+
+When the robot is connected and in the correct network/development mode, the topic list should include the expected Unitree topics, such as:
+
+```text
+/lowstate
+/lowcmd
+```
+
+This recommended solution addresses the MATLAB-version and ROS Toolbox firewall issues without modifying the MuJoCo blockset source code.
+
+> **Note on MATLAB R2025a compatibility**  
+> If the main Simulink model was saved in a newer MATLAB release and cannot be opened in MATLAB R2025a, an R2025a-compatible version of the ankle-motion example is provided in:
+>
+> ```text
+> resources/examples/ankle motion/
+> ```
+>
+> Use this version when MATLAB R2025a is required as a fallback for machines affected by `mexhost` / `MATLABMexHost.exe` issues.
+
+### Avoid long directory paths
+
+For a more stable setup, keep both the Sim2Real project and the MuJoCo Simulink Blockset in short local paths.
+
+Recommended examples:
+
+```text
+C:\GitHub\<PROJECT_FOLDER>
+C:\GitHub\<MUJOCO_SIMULINK_BLOCKSET_FOLDER>
+```
 
 ### ROS 2 custom message build fails because `source` already exists
 
@@ -484,7 +689,7 @@ Planned future developments include:
 ## Contact
 
 Leffer Trochez <br>
-Electronic Engineer, M.Sc. in Electronic and Computer Engineering, and Admitted to the Ph.D. in Engineering
+Electronic Engineer, M.Sc. in Electronic and Computer Engineering, and Ph.D. student in Engineering
 Universidad de los Andes  
 Faculty of Engineering  
 Department of Electrical and Electronic Engineering  
@@ -517,7 +722,7 @@ The repository can be cited as software in the following format:
   author       = {Leffer Trochez and Nicanor Quijano and Jorge Lopez-Jimenez and Carlos Francisco Rodriguez},
   title        = {A MATLAB/Simulink-Based Sim2Real Control Framework for the Unitree G1 Using ROS 2 and MuJoCo},
   year         = {2026},
-  version      = {1.2.0},
+  version      = {1.2.1},
   doi          = {10.5281/zenodo.20101555}, 
   url          = {https://doi.org/10.5281/zenodo.20101555} 
 }
