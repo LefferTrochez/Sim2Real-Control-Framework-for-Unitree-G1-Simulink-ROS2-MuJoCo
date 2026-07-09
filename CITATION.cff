@@ -1,4 +1,4 @@
-cff-version: 1.2.0
+cff-version: 1.2.1
 message: "If you use this software, please cite it as follows."
 title: "A MATLAB/Simulink-Based Sim2Real Control Framework for the Unitree G1 Using ROS 2 and MuJoCo"
 type: software
@@ -28,9 +28,9 @@ authors:
     affiliation: "Universidad de los Andes, Faculty of Engineering, Department of Mechanical Engineering, Bogotá D.C., Colombia"
     orcid: "https://orcid.org/0000-0002-7438-8963"
 
-version: "1.1.0"
-doi: "10.5281/zenodo.19462940"
-date-released: 2026-04-07
+version: "1.2.1"
+doi: "10.5281/zenodo.20101573"
+date-released: 2026-07-08
 license: "Apache-2.0"
 
 repository-code: "https://github.com/LefferTrochez/Sim2Real-Control-Framework-for-Unitree-G1-Simulink-ROS2-MuJoCo"
