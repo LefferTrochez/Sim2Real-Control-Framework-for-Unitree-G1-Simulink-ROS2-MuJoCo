@@ -11,8 +11,8 @@
   <a href="https://docs.ros.org/"><img src="https://img.shields.io/badge/ROS2-Supported-blue" alt="ROS 2" valign="middle"></a>
   <a href="https://mujoco.readthedocs.io/"><img src="https://img.shields.io/badge/MuJoCo-Integrated-green" alt="MuJoCo" valign="middle"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-Apache--2.0-red" alt="License" valign="middle"></a>
-  <a href="https://doi.org/10.5281/zenodo.20101555"><img src="https://img.shields.io/badge/DOI-10.5281%2Fzenodo.20101555-blue" alt="DOI" valign="middle"></a>
-  <a href="https://la.mathworks.com/matlabcentral/fileexchange/183593-sim2real-control-framework-unitree-g1-simulink-ros2-mujoco"><img src="https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg" alt="File Exchange" height="20" valign="middle"></a>
+  <a href="https://doi.org/10.5281/zenodo.20101573"><img src="https://img.shields.io/badge/DOI-10.5281%2Fzenodo.20101573-blue" alt="DOI" valign="middle"></a>
+  <a href="https://la.mathworks.com/matlabcentral/fileexchange/183593-sim2real-control-framework-unitree-g1-simulink-ros2-mujoco"><img src="https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg" alt="File Exchange" height="20" valign="middle"></a> 
 
 </p>
 
@@ -689,12 +689,12 @@ Planned future developments include:
 ## Contact
 
 Leffer Trochez <br>
-Electronic Engineer, M.Sc. in Electronic and Computer Engineering, and Ph.D. student in Engineering
-Universidad de los Andes  
-Faculty of Engineering  
-Department of Electrical and Electronic Engineering  
-GIAP Research Group  
-Bogotá D.C., Colombia  
+Electronic Engineer, M.Sc. in Electronic and Computer Engineering, and Ph.D. student in Engineering <br>
+Universidad de los Andes <br>
+Faculty of Engineering <br>
+Department of Electrical and Electronic Engineering <br>
+GIAP Research Group <br>
+Bogotá D.C., Colombia
 <p>
   <a href="mailto:l.trochez@uniandes.edu.co"><img src="images/Email.png" alt="Email" height="28" valign="middle"></a>
   &nbsp;
@@ -723,8 +723,8 @@ The repository can be cited as software in the following format:
   title        = {A MATLAB/Simulink-Based Sim2Real Control Framework for the Unitree G1 Using ROS 2 and MuJoCo},
   year         = {2026},
   version      = {1.2.1},
-  doi          = {10.5281/zenodo.20101555}, 
-  url          = {https://doi.org/10.5281/zenodo.20101555} 
+  doi          = {10.5281/zenodo.20101573}, 
+  url          = {https://doi.org/10.5281/zenodo.20101573} 
 }
 ```
 
