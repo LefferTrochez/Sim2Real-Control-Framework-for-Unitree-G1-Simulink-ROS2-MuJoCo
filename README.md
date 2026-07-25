@@ -1,19 +1,17 @@
-# A MATLAB/Simulink-Based Sim2Real Control Framework for the Unitree G1 Using ROS 2 and MuJoCo
+# Anonymous Review Repository: Backend-Switchable Sim2Real Control Framework for the Unitree G1
+
+> **Anonymous review version.** Author names, affiliations, contact information, citation metadata, archival identifiers, and links to the public project have been removed for double-anonymous peer review.
 
 <p align="center">
   <img src="images/Pipeline.png" alt="Sim2Real Pipeline" width="900">
 </p>
 
 <p align="center">
-  <a href="https://github.com/LefferTrochez/Sim2Real-Control-Framework-for-Unitree-G1-Simulink-ROS2-MuJoCo/releases/tag/v1.2.0"><img src="https://img.shields.io/badge/version-1.2.0-blue" alt="Version" valign="middle"></a>
   <a href="https://www.mathworks.com/products/matlab.html"><img src="https://img.shields.io/badge/MATLAB-Supported-orange" alt="MATLAB" valign="middle"></a>
   <a href="https://www.mathworks.com/products/simulink.html"><img src="https://img.shields.io/badge/Simulink-Based-orange" alt="Simulink" valign="middle"></a>
   <a href="https://docs.ros.org/"><img src="https://img.shields.io/badge/ROS2-Supported-blue" alt="ROS 2" valign="middle"></a>
   <a href="https://mujoco.readthedocs.io/"><img src="https://img.shields.io/badge/MuJoCo-Integrated-green" alt="MuJoCo" valign="middle"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-Apache--2.0-red" alt="License" valign="middle"></a>
-  <a href="https://doi.org/10.5281/zenodo.20101555"><img src="https://img.shields.io/badge/DOI-10.5281%2Fzenodo.20101555-blue" alt="DOI" valign="middle"></a>
-  <a href="https://la.mathworks.com/matlabcentral/fileexchange/183593-sim2real-control-framework-unitree-g1-simulink-ros2-mujoco"><img src="https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg" alt="File Exchange" height="20" valign="middle"></a>
-
 </p>
 
 ---
@@ -30,17 +28,14 @@
 8. [Technical Notes](#technical-notes)
 9. [Future Work](#future-work)
 10. [Technologies Used](#technologies-used)
-11. [Contact](#contact)
-12. [Citation](#citation)
-13. [License](#license)
-14. [Acknowledgments](#acknowledgments)
-15. [References](#references)
+11. [License](#license)
+12. [References](#references)
 
 ---
 
 ## Introduction
 
-This repository presents Version 1.2.0 of a MATLAB/Simulink-based Sim2Real framework for the Unitree G1 humanoid robot, integrating MuJoCo and ROS 2 within a unified workflow for controller development, simulation-based validation, visualization, and real-robot deployment. The main objective of this repository is to provide a clean and control-oriented framework that preserves a common high-level interface across both simulation and real-robot execution backends.
+This repository presents a MATLAB/Simulink-based Sim2Real framework for the Unitree G1 humanoid robot, integrating MuJoCo and ROS 2 within a unified workflow for controller development, simulation-based validation, visualization, and real-robot deployment. The main objective of this repository is to provide a clean and control-oriented framework that preserves a common high-level interface across both simulation and real-robot execution backends.
 
 ---
 
@@ -63,30 +58,26 @@ This design keeps the overall workflow modular, structured, and reusable.
 
 This repository includes a standard ankle-motion command task example used to validate the Sim2Real workflow in a simple and clear way. In this example, the goal is to show that the same high-level workflow can be reused across simulation and real-robot execution without changing the overall organization of the framework. This also highlights the simplicity and modularity of the framework from a block-based perspective, where new control implementations can be tested through a straightforward procedure: select the execution mode, update the model, and run it.
 
-https://github.com/user-attachments/assets/04d95202-4c3e-444c-940a-4de99ef791b5
+
+Any demonstration media included in this anonymous repository must not contain identifiable persons, voices, institutional logos, personal information, or identifying metadata.
 
 ---
 
 ## Repository Structure
 
-The repository is organized as follows:
+The anonymous review repository is organized as follows:
 
 ```text
 .
-├── docs/                 # GitHub Pages source files for the project website
-├── images/               # Figures, logos, and visual assets used in the README and documentation
-├── resources/            # Main technical folder of the project
-│   ├── examples/         # Example files built on top of the original Sim2Real framework (ankle-motion)
-│   ├── MuJoCo files/     # MuJoCo simulation resources, XML robot model, meshes, and related files
-│   ├── ROS 2 files/      # Custom Unitree ROS 2 messages and scripts for message generation/integration
-│   └── Sim2Real files/   # Core reusable Sim2Real base, Variant Subsystem, and support files
-├── videos/               # Video assets and demonstration media used by the project
-├── Abstract.pdf          # Submission summary project abstract
-├── CITATION.cff          # Citation metadata for academic referencing
-├── Extended Abstract.pdf # Submission project abstract
-├── ICRA 2026 poster.pdf  # Poster version v1.0 of the project
+├── docs/                 # Local technical documentation
+├── images/               # Technical figures and anonymized visual assets
+├── resources/            # Main technical folder
+│   ├── examples/         # Examples built on the reusable framework
+│   ├── MuJoCo files/     # MuJoCo model, meshes, and simulation resources
+│   ├── ROS 2 files/      # Unitree ROS 2 messages and generation scripts
+│   └── Sim2Real files/   # Core framework, Variant Subsystem, and support files
 ├── LICENSE               # Apache-2.0 license
-└── README.md             # Main project documentation
+└── README.md             # Main technical documentation
 ```
 
 In addition to the Variant Subsystem logic, the repository is organized around three main technical folders that support the full workflow depending on the selected `RUN_MODE`:
@@ -481,67 +472,9 @@ Planned future developments include:
 
 ---
 
-## Contact
-
-Leffer Trochez <br>
-Electronic Engineer, M.Sc. in Electronic and Computer Engineering, and Admitted to the Ph.D. in Engineering
-Universidad de los Andes  
-Faculty of Engineering  
-Department of Electrical and Electronic Engineering  
-GIAP Research Group  
-Bogotá D.C., Colombia  
-<p>
-  <a href="mailto:l.trochez@uniandes.edu.co"><img src="images/Email.png" alt="Email" height="28" valign="middle"></a>
-  &nbsp;
-  <a href="https://www.linkedin.com/in/leffer-trochez/"><img src="images/LinkedIn.png" alt="LinkedIn" height="28" valign="middle"></a>
-  &nbsp;
-  <a href="https://scholar.google.com/citations?user=Ve1E4AEAAAAJ&hl=es&oi=ao"><img src="images/GoogleScholar.png" alt="Google Scholar" height="28" valign="middle"></a>
-  &nbsp;
-  <a href="https://orcid.org/0009-0002-5321-7652"><img src="images/ORCID.png" alt="ORCID" height="28" valign="middle"></a>
-</p>
-
----
-
-## Citation
-
-If you use this repository in academic work, research projects, technical reports, or derivative software developments, please cite the archived Zenodo release associated with this project.
-
-This repository includes a `CITATION.cff` file in the root of the repository so that GitHub can expose a standard citation format through the **Cite this repository** feature. In addition, the public release of this project has been archived in Zenodo and assigned a DOI for versioned citation.
-
-### How to cite
-
-The repository can be cited as software in the following format:
-
-```bibtex
-@software{trochez2026sim2real,
-  author       = {Leffer Trochez and Nicanor Quijano and Jorge Lopez-Jimenez and Carlos Francisco Rodriguez},
-  title        = {A MATLAB/Simulink-Based Sim2Real Control Framework for the Unitree G1 Using ROS 2 and MuJoCo},
-  year         = {2026},
-  version      = {1.2.0},
-  doi          = {10.5281/zenodo.20101555}, 
-  url          = {https://doi.org/10.5281/zenodo.20101555} 
-}
-```
-
-### Citation note
-
-GitHub supports citation outputs based on `CITATION.cff`, including APA and BibTeX. Zenodo archives public releases of the repository and assigns a persistent DOI for version-specific citation.
-
----
-
 ## License
 
-This project is licensed under the Apache License 2.0. See the [LICENSE](LICENSE) file for the full license text.
-
----
-
-## Acknowledgments
-
-The author would like to express sincere gratitude to [Manoj Velmurugan](https://vmanoj1996.github.io/) for having planted the initial seed of this work through the MuJoCo Simulink Blockset, which provided an important foundation and early inspiration for the development of this framework.
-
-In addition, the author gratefully acknowledges [Álvaro Achury](https://academia.uniandes.edu.co/AcademyCv/au.achury33), leader of the laboratories and caretaker of the humanoid robot platform at Universidad de los Andes (AURA), for his valuable assistance in the handling and operation of the real robot platform.
-
-Finally, the author also acknowledges the use of [ChatGPT (OpenAI)](https://openai.com/) as an auxiliary tool to improve selected visual materials and support parts of the code structuring process. All technical decisions, implementation, validation, and final content were carried out and verified by the author.
+This project is distributed under the Apache License 2.0. See the [LICENSE](LICENSE) file for the full license text.
 
 ---
 
@@ -564,11 +497,3 @@ This project builds upon the following software tools, repositories, and officia
 7. Unitree Robotics. *unitree_sdk2*. GitHub repository. Available at: https://github.com/unitreerobotics/unitree_sdk2
 
 8. Unitree Robotics. *unitree_ros2*. GitHub repository. Available at: https://github.com/unitreerobotics/unitree_ros2
-
-9. TechEBlog. *Unitree G1 Humanoid Robot Gets Upgraded, Learns Kung Fu and Can Do Roundhouse Kicks*. Web article, 2026. Available at: https://www.techeblog.com/unitree-g1-humanoid-robot-kung-fu/
-
----
-
-### Note on Visual Reference Material
-
-The external image referenced in Reference 9 was used only as a visual reference in this repository. It is not claimed as original content, and all rights remain with the corresponding copyright holder.
