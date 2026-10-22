@@ -1,0 +1,9 @@
+Metric,Unit,MuJoCo,G1_Hardware
+Pitch RMS error,rad,0.0493952579530316,0.0706827715438256
+Pitch peak error,rad,0.0729203179622917,0.106563893765697
+Pitch response shift,ms,31.9999999999965,45.9999999999949
+Roll RMS error,rad,0.0154886519891562,0.0120731393492758
+Roll peak error,rad,0.0216297741174851,0.0210006039959365
+Roll response shift,ms,27.9999999999969,21.9999999999976
+Configured backend period,ms,1,1
+Configured supervisory/logging rate,Hz,500,500
