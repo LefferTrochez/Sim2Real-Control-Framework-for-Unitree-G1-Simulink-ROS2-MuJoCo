@@ -22,7 +22,7 @@
 
 1. [Introduction](#introduction)
 2. [Framework Overview](#framework-overview)
-3. [Representative Example: Ankle Motion](#representative-example-ankle-motion)
+3. [Representative Examples](#representative-examples)
 4. [Repository Structure](#repository-structure)
 5. [Getting Started](#getting-started)
 6. [How to Use](#how-to-use)
@@ -59,11 +59,22 @@ This design keeps the overall workflow modular, structured, and reusable.
 
 ---
 
-## Representative Example: Ankle Motion
+## Representative Examples
+
+Two examples demonstrate the use of the same high-level Simulink control structure across MuJoCo simulation and the physical Unitree G1, using the common interfaces and backend selection provided by the framework.
+
+### Ankle Motion
 
 This repository includes a standard ankle-motion command task example used to validate the Sim2Real workflow in a simple and clear way. In this example, the goal is to show that the same high-level workflow can be reused across simulation and real-robot execution without changing the overall organization of the framework. This also highlights the simplicity and modularity of the framework from a block-based perspective, where new control implementations can be tested through a straightforward procedure: select the execution mode, update the model, and run it.
 
 https://github.com/user-attachments/assets/04d95202-4c3e-444c-940a-4de99ef791b5
+
+### Whole-Body Motion
+
+This example performs a sequence of left- and right-leg movements, controlling the hip-pitch and knee joints with a shared trajectory generator and supervisory PI reference correction. The same control structure is used in MuJoCo and on the physical Unitree G1, with recorded trajectories and comparison metrics available in `resources/examples/whole body motion/`. The robot is externally supported during physical experiments; the example does not demonstrate autonomous balancing.
+
+https://github.com/user-attachments/assets/b50407f2-2c7a-4aa0-b46c-98e235c7ba79
+
 
 ---
 
@@ -77,7 +88,9 @@ The repository is organized as follows:
 ├── images/               # Figures, logos, and visual assets used in the README and documentation
 ├── resources/            # Main technical folder of the project
 │   ├── _generated/       # Auto-generated Simulink cache, codegen, and temporary build files
-│   ├── examples/         # Example files built on top of the original Sim2Real framework (ankle-motion)
+│   ├── examples/         # Example controllers and experimental results
+│   │   ├── ankle motion/       # Ankle pitch/roll model and analysis scripts
+│   │   └── whole body motion/  # Leg-motion model, CSV logs, comparison plots, and metrics
 │   ├── MuJoCo files/     # MuJoCo simulation resources, XML robot model, meshes, and related files
 │   ├── ROS 2 files/      # Custom Unitree ROS 2 messages and scripts for message generation/integration
 │   └── Sim2Real files/   # Core reusable Sim2Real base, Variant Subsystem, and support files
@@ -90,8 +103,9 @@ The repository is organized as follows:
 └── README.md             # Main project documentation
 ```
 
-In addition to the Variant Subsystem logic, the repository is organized around three main technical folders that support the full workflow depending on the selected `RUN_MODE`:
+In addition to the Variant Subsystem logic, the repository is organized around four main technical folders that support the full workflow depending on the selected `RUN_MODE`:
 
+- `examples/` contains the two application examples (`ankle motion/` and `whole body motion/`), including their Simulink models, MATLAB scripts, and available experimental results.
 - `MuJoCo files/` contains the simulation-side resources used when the framework runs in MuJoCo. This includes the robot XML model, auxiliary files, and the `meshes/` folder, which must remain in the same directory as the XML for the model to load correctly. The MuJoCo model is based on the [Unitree G1 model from MuJoCo Menagerie](https://github.com/google-deepmind/mujoco_menagerie/tree/main/unitree_g1), but it was modified for this project. In particular, torso attachment points were added so the robot can be supported by a virtual crane during initialization. This was done to reproduce the same practical procedure used on the real robot, which is initially started while suspended. The MuJoCo-side environment therefore includes both the modified XML and a control function inside the MuJoCo SUBSYSTEM to actuate the virtual crane for lifting, lowering, and releasing the robot.
 - `ROS 2 files/` contains the communication-side resources used when the framework runs with the real robot. This includes the `unitree_hg` custom message package required for this platform, as well as MATLAB scripts for generating and integrating the custom ROS 2 messages used by the Simulink model.
 - `Sim2Real files/` contains the core reusable base of the framework. This is the main folder for building new implementations on top of the repository. It includes the base Simulink model `Sim2Real_variant_subsystem.slx` together with the live scripts that initialize and configure the environment:
@@ -100,7 +114,7 @@ In addition to the Variant Subsystem logic, the repository is organized around t
   - `bus_definitions.mlx`: creates the Simulink bus objects used to keep signal organization structured and consistent.
   - `g1_constraints.mlx`: defines joint limits, channel groupings, and constraint-related parameters for the Unitree G1.
 
-Together, these folders provide the base structure for developing new control implementations in a modular way. The `Sim2Real files/` folder defines the reusable framework itself, while the `MuJoCo files/` and `ROS 2 files/` folders complement that base according to the backend selected through `RUN_MODE`.
+Together, these folders provide the base structure for developing new control implementations in a modular way. The `Sim2Real files/` folder defines the reusable framework itself, while the `MuJoCo files/` and `ROS 2 files/` folders complement that base according to the backend selected through `RUN_MODE`. The `examples/` folder contains the ankle-motion and whole-body-motion applications built on this shared framework.
 
 ---
 
