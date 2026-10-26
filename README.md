@@ -786,8 +786,16 @@ This project builds upon the following software tools, repositories, and officia
 
 9. TechEBlog. *Unitree G1 Humanoid Robot Gets Upgraded, Learns Kung Fu and Can Do Roundhouse Kicks*. Web article, 2026. Available at: https://www.techeblog.com/unitree-g1-humanoid-robot-kung-fu/
 
+
 ---
 
-### Note on Visual Reference Material
+## Notes
+
+### Visual Reference Material
 
 The external image referenced in Reference 9 was used only as a visual reference in this repository. It is not claimed as original content, and all rights remain with the corresponding copyright holder.
+
+### Sim2Real Naming and Terminology
+
+The name **Sim2Real** is retained for consistency with the original repository, existing files, and previously published releases, including MATLAB File Exchange. The associated research paper uses **simulation-to-hardware** to describe the methodology more precisely. Both terms refer to the same implementation, which focuses on supervisory controller deployment across simulation and physical hardware, without claiming to eliminate the simulation-to-reality gap.
+
