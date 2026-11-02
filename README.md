@@ -670,6 +670,14 @@ The current framework uses different channel counts depending on the role of eac
 would need to be updated by replacing `range="0 1e-6"` with `range="-0.52 0.52"` and removing `limited="true"`, in addition to updating the corresponding framework-side constraint definitions.
 - Why must the files remain inside `resources`, and what must be updated if filenames change? The initialization logic assumes `resources` as the project root. Starting from the `.slx` model location, the `InitFcn` traverses upward until it finds the parent folder named `resources`, and then performs a recursive search inside that directory to locate `unitree_G1.xml`. The `.slx` model and `launcher.mlx` must remain in the same folder, since the launcher is referenced explicitly from the model directory. If the launcher filename is changed, the corresponding line in the `InitFcn` must also be updated (currently line 56). Likewise, if any additional live scripts called from the launcher are renamed, their names must also be updated inside `launcher.mlx`.
 
+**Clarification of channel counts:** The framework distinguishes
+between 29 body-joint channels, 35 internal constraint entries
+(including reserved slots), and 43 command channels (including
+inactive hand-related channels). Table IV of the accompanying
+paper describes the 29-joint body interface rather than the
+complete command representation. These counts correspond to
+different implementation structures and are not interchangeable.
+
 ---
 
 ## Future Work
