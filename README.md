@@ -707,6 +707,68 @@ The bilateral leg-motion model defines the following joint-group PD gains throug
 
 
 
+### Adapter Mapping and Interface Consistency
+
+The framework maintains a unified supervisory interface across MuJoCo simulation and ROS 2 hardware execution. Both backends expose four command buses and four feedback buses, while their internal actuation, communication, and signal-processing mechanisms remain backend-specific.
+
+The following tables document the implemented signal mappings, joint ordering, and interface conventions corresponding to the adapter transformations described in the accompanying research paper.
+
+#### Backend Mapping and Signal Conventions
+
+| Property | MuJoCo Simulation | ROS 2 Hardware |
+|---|---|---|
+| Command interface | Four shared buses: torque, position, velocity, PD gains | Same four shared buses |
+| Feedback interface | Four shared buses: torque, position, velocity, IMU | Same four shared buses |
+| Body joints | 29 | 29 |
+| Command mapping | Joint references converted to simulated PD torques | Joint references packed into Unitree `LowCmd` messages |
+| Position feedback | MuJoCo joint-position fields | `LowState.motor_state(i).q` |
+| Velocity feedback | MuJoCo joint-velocity fields | `LowState.motor_state(i).dq` |
+| Torque feedback | Simulated joint torque fields | `LowState.motor_state(i).tau_est` |
+| IMU feedback | `imu_quat`, `imu_gyro`, `imu_acc` | `imu_state.quaternion`, `gyroscope`, `accelerometer` |
+| Joint ordering | Explicit mapping to the common 29-joint order | Unitree motor indices 0–28 |
+| Signal units | Position: rad; velocity: rad/s; torque: Nm | Same nominal interface units |
+| Sign and unit conversions | No explicit sign inversion or angle-unit conversion identified in the examined mapping function | No explicit sign inversion or angle-unit conversion identified in the examined mapping function |
+| PD control | Computed in Simulink using position/velocity feedback and feedforward torque | References and gains passed to embedded actuator control |
+| Actuator limits | Torque saturation using `P_G1_CONSTRAINTS.tau_abs` | No equivalent explicit torque saturation identified in the examined `LowCmd` packing function |
+| Disabled joints | Waist roll/pitch constrained; hand torque outputs zero | Waist roll/pitch disabled; unused motor-command entries initialized to zero |
+| Native command representation | 43-field `bus_tau_cmd`, including inactive hand fields | 35 motor-command structures, with 29 body entries populated |
+| Communication | MuJoCo Simulink Blockset | ROS 2 Publish/Subscribe, Unitree messages and CRC |
+| Configured execution periods | Base: 1 ms; supervision: 2 ms | Base: 1 ms; supervision: 2 ms |
+| Rate handling | Simulink Rate Transition blocks | Simulink Rate Transition blocks |
+
+#### Common Body-Joint Ordering
+
+The supervisory interface uses the same logical organization of 29 body joints across both execution backends.
+
+| Joint Group | MATLAB Indices (1-Based) | Unitree Indices (0-Based) |
+|---|---|---|
+| Left leg | 1–6 | 0–5 |
+| Right leg | 7–12 | 6–11 |
+| Waist | 13–15 | 12–14 |
+| Left arm | 16–22 | 15–21 |
+| Right arm | 23–29 | 22–28 |
+
+**Joint order within each group:**
+
+- **Legs:** Hip pitch, hip roll, hip yaw, knee, ankle pitch, ankle roll.
+- **Waist:** Waist yaw, waist roll, waist pitch.
+- **Arms:** Shoulder pitch, shoulder roll, shoulder yaw, elbow, wrist roll, wrist pitch, wrist yaw.
+
+#### Interface Consistency Conditions
+
+The framework follows four adapter-consistency conditions:
+
+1. **Dimensional consistency:** Command and feedback buses maintain consistent signal dimensions and the common 29-joint organization.
+2. **Semantic consistency:** Joint ordering, signal units, signs, and coordinate conventions must agree across the backend mappings.
+3. **Responsibility consistency:** MuJoCo-specific actuation and ROS 2 communication remain isolated within their respective adapters.
+4. **Rate consistency:** The framework defines common sampling periods and uses Rate Transition blocks to connect execution rates.
+
+**Verification scope:** The tables document the implemented mappings and configuration settings based on source-level inspection. Physical sign/frame equivalence and wall-clock timing are not independently established by this inspection.
+
+The implementation is designed to preserve the supervisory-controller structure when switching between execution backends, without implying identical robot dynamics or low-level actuator behavior.
+
+
+
 ### FAQ on Channel Mapping and Joint Usage
 
 The current framework uses different channel counts depending on the role of each signal group:
