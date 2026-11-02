@@ -649,6 +649,64 @@ When running on the real robot:
 - Verify the relevant ROS 2 topics before running
 - Keep the execution focused on the active Simulink workflow
 
+
+
+### Experimental Controller and Reference Parameters
+
+The following tables summarize the controller settings, reference trajectories, and execution parameters used in the ankle-motion and bilateral leg-motion experiments. These values correspond to the provided Simulink models and configuration scripts.
+
+#### Experimental Configuration
+
+| Parameter | Ankle Motion | Bilateral Leg Motion |
+|---|---|---|
+| Robot | Unitree G1 EDU | Unitree G1 EDU |
+| Controlled joints | Left/right ankle pitch and roll | Left/right hip pitch and knee |
+| Supervisory controller | Discrete PI | Discrete PI |
+| PI proportional gain (Kp) | Pitch: 0.3; Roll: 0.5 | Left hip: 0.24; Left knee: 0.17; Right hip: 0.22; Right knee: 0.15 |
+| PI integral gain (Ki) | Pitch: 0.04; Roll: 0.001 | Left hip: 0.42; Left knee: 0.35; Right hip: 0.42; Right knee: 0.40 |
+| Maximum PI correction | Pitch: ±0.035 rad; Roll: ±0.025 rad | ±0.28 rad per joint, subject to joint constraints |
+| Actuator PD gain (Kp) | 60 for ankle pitch/roll | 75 for hip pitch/knee; 60 for other leg joints |
+| Actuator PD gain (Kd) | 2 for ankle pitch/roll | 3 for hip pitch/knee; 2 for other leg joints |
+| Reference type | Sinusoidal | Five-keyframe trajectory with cubic interpolation |
+| Reference amplitude / target | Pitch: 20°; Roll: 7° | Hip pitch: −1.0 rad; Knee: 1.1 rad at lift keyframes |
+| Reference frequency / timing | 1 Hz (simulation time) | 1.5 s per keyframe |
+| Reference activation | 3 s | Motion enabled at 8 s |
+| Initial READY interpolation | Not applicable | 2 s |
+| Motion sequence | Continuous sinusoidal tracking | READY → Left lift → READY → Right lift → READY |
+| Sequence duration | — | 7.5 s |
+| Final hold duration | — | 1 s |
+| Supervisory sampling period | 2 ms | 2 ms |
+| Base model step | 1 ms | 1 ms |
+| UI update period | 70 ms | 70 ms |
+| MuJoCo configured FPS | 60 | 60 |
+| Simulink stop time | 8 s | 19 s |
+| RMSE evaluation window | 3–5 s | 10–19 s |
+| Physical robot support | External crane | External crane |
+
+#### Additional Actuator PD Gains — Bilateral Leg Motion
+
+The bilateral leg-motion model defines the following joint-group PD gains through the `kp_kd_constants` MATLAB Function block.
+
+| Joint Group | Kp | Kd |
+|---|---:|---:|
+| Hip pitch and knee (both legs) | 75 | 3 |
+| Other leg joints | 60 | 2 |
+| Waist yaw | 40 | 2 |
+| Waist roll and pitch (disabled) | 0 | 0 |
+| Shoulder and elbow joints | 20 | 1 |
+| Wrist joints | 5 | 0.5 |
+
+**Implementation notes:**
+
+- The supervisory PI gains and commanded actuator PD gains remain unchanged when switching between MuJoCo (`RUN_MODE=0`) and ROS 2 hardware (`RUN_MODE=1`) within the same application.
+- The two applications use different controller parameters according to their respective motion tasks.
+- The PD gains listed above are configured values when actuator gains are enabled; actual low-level actuation differs between MuJoCo and the physical robot.
+- Sampling periods and reference times correspond to Simulink simulation time. Hardware execution was performed without simulation pacing.
+- The reported RMSE windows represent selected post-initialization tracking intervals. The bilateral leg-motion interval includes commanded keyframe transitions and should not be interpreted as strictly steady-state operation.
+- Full controller implementations, joint constraints, and reference-generation logic are available in the corresponding Simulink models and MATLAB configuration scripts.
+
+
+
 ### FAQ on Channel Mapping and Joint Usage
 
 The current framework uses different channel counts depending on the role of each signal group:
